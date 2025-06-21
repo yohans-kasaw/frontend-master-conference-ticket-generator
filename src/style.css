@@ -29,31 +29,16 @@ body {
         url('./assets/svgs/pattern-lines.svg'),
         url('./assets/background/background-desktop.png');
     background-repeat: no-repeat;
+    background-color: #020114;
     background-size:
-        35vw 25vh,
-        75vw 50vh,
-        20vw 20vh,
-        cover,
+        contain contain contain cover,
         cover;
     background-position:
-        65vw 2vh,
-        0 50vh,
-        62vw 45vh,
-        center,
+        top right,
+        bottom left,
+        75% center,
+        top,
         center;
 
-    animation: fade-in 6s ease-in-out infinite
-}
-
-.page-spiral {
-
-}
-
-@keyframes fade-in {
-    0%, 100%{
-        opacity: 0.4;
-    }
-    50% {
-        opacity: 1;
-    }
+    animation: fade-in 6s ease-in-out infinite;
 }
