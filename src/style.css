@@ -52,8 +52,12 @@ body {
         url('./assets/svgs/pattern-lines.svg'),
         url('./assets/background/background-mobile.png');
     background-repeat: no-repeat;
-    background-color: red;
-    background-size: 35vw auto, 50vw auto, 20vw auto, auto, cover;
+    background-size:
+        35vw auto,
+        50vw auto,
+        20vw auto,
+        auto,
+        cover;
     background-position:
         top right,
         bottom left,
@@ -87,11 +91,11 @@ body {
 }
 
 .font-extra-big {
-    font-size: 4rem;
+    font-size: clamp(1.6rem, 6vw, 4rem);
 }
 
 .font-big {
-    font-size: 2rem;
+    font-size: clamp(0.8rem, 3vw, 1.8rem);
 }
 
 .font-mid {

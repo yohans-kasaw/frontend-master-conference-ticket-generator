@@ -1,13 +1,25 @@
 <template>
-    <TicketConfirmation/>
+    <div class="mt-10 d-flex justify-center">
+        <div>
+            <v-img :src="log_full_url" :width="200" />
+        </div>
+    </div>
+    <TicketConfirmation />
 </template>
 
 <script>
-import TicketConfirmation from "./views/TicketConfirmation.vue"
+import log_full_url from '@src/assets/svgs/logo-full.svg'
+
+import TicketConfirmation from './views/TicketConfirmation.vue'
 export default {
     components: {
-        TicketConfirmation
-    }
+        TicketConfirmation,
+    },
+    data() {
+        return {
+            log_full_url,
+        }
+    },
 }
 </script>
 
