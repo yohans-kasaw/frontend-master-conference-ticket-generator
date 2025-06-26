@@ -53,7 +53,7 @@ body {
         url('./assets/background/background-mobile.png');
     background-repeat: no-repeat;
     background-color: red;
-    background-size: auto, auto, 20rem 20rem, auto, cover;
+    background-size: 35vw auto, 50vw auto, 20vw auto, auto, cover;
     background-position:
         top right,
         bottom left,
