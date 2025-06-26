@@ -3,7 +3,7 @@
         <div class="mt-15 mx-auto">
             <div
                 class="font-weight-bold font-extra-big text-center mx-auto"
-                style="width: 85vw; max-width: 55rem;"
+                style="width: 95vw; max-width: 55rem;"
             >
                 Congrats,
                 <span class="red-gradient-text"> Jonatan Kirstof! </span>
@@ -11,7 +11,7 @@
             </div>
             <div
                 class="mt-8 font-weight-regular font-big text-center mx-auto"
-                style="width: 60vw; max-width: 40rem;"
+                style="width: 85vw; max-width: 40rem;"
             >
                 We've emailed your ticket to
                 <span class="red-text">jonatan@email.com</span>
