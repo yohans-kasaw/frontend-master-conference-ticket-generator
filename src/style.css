@@ -1,5 +1,5 @@
 :root {
-    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-family: 'Inconsolata', system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
     font-weight: 400;
 
@@ -12,47 +12,39 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    --primary-red: #f57463
+    --primary-red: #f57463;
 }
 
 body {
     margin: 0;
 }
 
-
 @font-face {
     font-family: 'Inconsolata';
-    src: url("/assets/fonts/static/Inconsolata-ExtraBold.ttf") format("truetype");
+    src: url('/assets/fonts/static/Inconsolata-ExtraBold.ttf')
+        format('truetype');
     font-weight: 800;
 }
 
 @font-face {
     font-family: 'Inconsolata';
-    src: url("/assets/fonts/static/Inconsolata-Regular.ttf") format("truetype");
+    src: url('/assets/fonts/static/Inconsolata-Medium.ttf') format('truetype');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Inconsolata';
+    src: url('/assets/fonts/static/Inconsolata-Regular.ttf') format('truetype');
     font-weight: 400;
 }
 
-.font-inconsolata{
-    font-family: 'Inconsolata' !important;
+.red-text {
+    color: var(--primary-red);
 }
-
-.red-gradient-text{
-    background-color: white;
-    background-image: linear-gradient(to right, var(--primary-red), white);
-    background-clip: text;
-    color: transparent;
-}
-
-.red-text{
-    color: var(--primary-red)
-}
-
 
 .page-wrapper {
     height: 100vh;
-    width: 100vw;
-    z-index: -10;
-    position: absolute;
+    overflow: auto;
     background-image:
         url('./assets/svgs/pattern-squiggly-line-top.svg'),
         url('./assets/svgs/pattern-squiggly-line-bottom-mobile-tablet.svg'),
@@ -60,14 +52,12 @@ body {
         url('./assets/svgs/pattern-lines.svg'),
         url('./assets/background/background-mobile.png');
     background-repeat: no-repeat;
-    background-color: #020114;
-    background-size:
-        contain contain contain cover,
-        cover;
+    background-color: red;
+    background-size: auto, auto, 20rem 20rem, auto, cover;
     background-position:
         top right,
         bottom left,
-        75% center,
+        75% 75%,
         top,
         center;
 
@@ -94,4 +84,16 @@ body {
             url('./assets/svgs/pattern-lines.svg'),
             url('./assets/background/background-desktop.png');
     }
+}
+
+.font-extra-big {
+    font-size: 4rem;
+}
+
+.font-big {
+    font-size: 2rem;
+}
+
+.font-mid {
+    font-size: 1.2rem;
 }
