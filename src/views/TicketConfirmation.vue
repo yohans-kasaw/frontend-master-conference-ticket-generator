@@ -1,37 +1,49 @@
 <template>
-    <div class="d-flex flex-column">
-        <div class="mt-15 mx-auto">
+    <div class="d-flex flex-column align-center">
+        <div class="mt-15">
             <div
                 class="font-weight-bold font-extra-big text-center mx-auto"
-                style="width: 95vw; max-width: 55rem;"
+                style="width: 95vw; max-width: 55rem"
             >
                 Congrats,
-                <span class="red-gradient-text"> Jonatan Kirstof! </span>
-                Your ticket is ready
+                <span class="red-gradient-text">{{ userInfo.name }}</span>
+                Your ticket is ready.
             </div>
             <div
                 class="mt-8 font-weight-regular font-big text-center mx-auto"
-                style="width: 85vw; max-width: 40rem;"
+                style="width: 85vw; max-width: 40rem"
             >
                 We've emailed your ticket to
-                <span class="red-text">jonatan@email.com</span>
+                <span class="red-text">{{ userInfo.email }}</span>
                 and will send update in the run up to the event.
             </div>
+        </div>
+        <div style="width: 42rem; padding-top: 8rem">
+            <TicketCard :userInfo="userInfo" />
         </div>
     </div>
 </template>
 
 <script>
 import image_avatar from '@src/assets/images/image-avatar.jpg'
-import Ticket from '@src/components/Ticket.vue'
+import TicketCard from '@src/components/TicketCard.vue'
 
 export default {
     components: {
-        Ticket,
+        TicketCard,
     },
     data() {
         return {
             image_avatar,
+            userInfo: {
+                name: 'Jonatan Kirstof',
+                email: "jon@gmail.com",
+                github: 'jon',
+                avatar_url: image_avatar,
+                event_date: 'Dec 12',
+                event_city: 'Las Vegas',
+                ticket_number: '123432',
+            },
         }
     },
 }
