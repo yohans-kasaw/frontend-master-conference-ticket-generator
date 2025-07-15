@@ -1,12 +1,12 @@
 <template>
     <div class="d-flex flex-column align-center">
-        <div class="mt-15">
+        <div style="margin-top: 4vh;">
             <div
                 class="font-weight-bold font-extra-big text-center mx-auto"
-                style="width: 95vw; max-width: 55rem"
+                style="width: 95vw; max-width: 50rem"
             >
                 Congrats,
-                <span class="red-gradient-text">{{ userInfo.name }}</span>
+                <span class="red-gradient-text">{{ userInfo.name }}!</span>
                 Your ticket is ready.
             </div>
             <div
@@ -18,7 +18,7 @@
                 and will send update in the run up to the event.
             </div>
         </div>
-        <div style="width: 42rem; padding-top: 8rem">
+        <div style="width: 95%; max-width: 35rem; margin-top: 13vh; margin-bottom: 13vh;">
             <TicketCard :userInfo="userInfo" />
         </div>
     </div>
@@ -37,12 +37,12 @@ export default {
             image_avatar,
             userInfo: {
                 name: 'Jonatan Kirstof',
-                email: "jon@gmail.com",
-                github: 'jon',
+                email: "Jonatan@gmail.com",
+                github: '@jonatankirstof1010',
                 avatar_url: image_avatar,
-                event_date: 'Dec 12',
-                event_city: 'Las Vegas',
-                ticket_number: '123432',
+                event_date: 'Jan 31, 2025',
+                event_city: 'Austin, Tx',
+                ticket_number: '01609',
             },
         }
     },

@@ -1,44 +1,59 @@
 <template>
     <div>
-        <v-img :src="ticket_background_url">
-            <div class="d-flex justify-space-between h-100" style="gap: 80px">
-                <div class="pa-6 d-flex flex-column justify-space-between">
-                    <div class="pt-2">
-                        <img :src="log_full_url" height="45" />
-                        <div class="ml-16 font-mid" variant="text">
-                            {{ userInfo.event_date }} /
-                            {{ userInfo.event_city }}
-                        </div>
-                    </div>
-                    <div class="d-flex align-center ga-4">
-                        <v-avatar rounded="0" size="90">
+        <v-img
+            :src="ticket_background_url"
+            class="d-flex justify-center align-stretch"
+            style="padding-top: 0px !important"
+        >
+            <div class="pa-sm-3 h-100 d-flex">
+                <v-col
+                    cols="10"
+                    class="d-flex flex-column justify-space-between"
+                >
+                    <v-row align="start">
+                        <v-col style="height: 100px">
+                            <div>
+                                <img
+                                    :src="log_full_url"
+                                    class="img-long-logo"
+                                    style="width: 75%"
+                                />
+                            </div>
+                            <div class="font-mid text-center">
+                                {{ userInfo.event_date }} /
+                                {{ userInfo.event_city }}
+                            </div>
+                        </v-col>
+                    </v-row>
+                    <v-row dense align="end">
+                        <v-col class="d-flex ga-2" cols="auto">
                             <v-img
                                 :src="userInfo.avatar_url"
-                                style="border-radius: 16px"
+                                style="border-radius: 20%"
+                                width="15vw"
+                                max-width="80px"
                             />
-                        </v-avatar>
-                        <div>
-                            <div class="font-weight-medium font-big">
-                                {{ userInfo.name }}
+                            <div class="d-flex flex-column justify-center">
+                                <div class="font-weight-medium font-big">
+                                    {{ userInfo.name }}
+                                </div>
+                                <div class="d-flex">
+                                    <img :src="icon_github" class="img-icon" />
+                                    <span
+                                        class="font-weight-medium font-mid pl-1"
+                                    >
+                                        {{ userInfo.github }}
+                                    </span>
+                                </div>
                             </div>
-                            <div class="d-flex ga-2">
-                                <img :src="icon_github" />
-                                <span class="font-weight-medium font-mid">
-                                    {{ userInfo.github }}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-flex justify-center align-center ml-4">
-                    <v-chip
-                        class="vertical-text text-h5"
-                        color="grey"
-                        variant="text"
-                    >
+                        </v-col>
+                    </v-row>
+                </v-col>
+                <v-col cols="2" class="d-flex justify-center align-center">
+                    <div class="vertical-text font-big" style="color: gray">
                         #{{ userInfo.ticket_number }}
-                    </v-chip>
-                </div>
+                    </div>
+                </v-col>
             </div>
         </v-img>
     </div>
