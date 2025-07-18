@@ -1,7 +1,7 @@
 <template>
     <div class="mt-10 d-flex justify-center">
         <div>
-            <v-img :src="log_full_url" :width="200" />
+            <v-img :src="log_full_url" :width="300" />
         </div>
     </div>
     <router-view> 
