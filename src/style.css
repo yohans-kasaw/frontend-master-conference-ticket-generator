@@ -48,7 +48,7 @@
     --primary-bg-color: rgba(70, 60, 98, 0.4);
     --hover-bg-color: rgba(153, 142, 184, 0.4);
     --border-color: rgba(255, 255, 255, 0.5);
-    --border-radius: 20px;
+    --border-radius: 24px;
     --input-height: 5.5vh;
 }
 
@@ -132,14 +132,12 @@
     border: 1px solid var(--border-color);
 }
 
-/* --- */
-
 .v-field__input {
     font-size: var(--font-mid); 
     height: var(--input-height);
+    border: 0.5px solid var(--border-color);
     border-radius: var(--border-radius) !important;
     padding-left: 1.5rem !important;
-    border: 1px solid var(--border-color);
     background-color: var(--primary-bg-color);
 }
 

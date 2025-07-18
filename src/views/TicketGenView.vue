@@ -18,12 +18,12 @@
             class="mt-16"
             style="margin-bottom: 10vh; width: 95vw; max-width: 700px"
         >
-            <v-form>
+            <v-form @submit.prevent ref="formRef">
                 <v-row dense class="mb-5">
                     <v-col cols="12" class="font-big font-weight-medium mb-2">
                         Upload Avatar
                     </v-col>
-                    <UploadAvatar />
+                    <UploadAvatar @update:avatar_url="handelImageUrlUpdate" />
                 </v-row>
 
                 <v-row dense>
@@ -31,7 +31,13 @@
                         Full Name
                     </v-col>
                     <v-col>
-                        <v-text-field variant="sol"> </v-text-field>
+                        <v-text-field
+                            v-model="userInfo.name"
+                            :rules="[rules.required]"
+                            rounded
+                            variant="outlined"
+                        >
+                        </v-text-field>
                     </v-col>
                 </v-row>
                 <v-row dense>
@@ -40,7 +46,10 @@
                     </v-col>
                     <v-col>
                         <v-text-field
-                            variant="sol"
+                            v-model="userInfo.email"
+                            :rules="[rules.required]"
+                            rounded
+                            variant="outlined"
                             placeholder="example@example.com"
                             type="email"
                         ></v-text-field>
@@ -51,7 +60,13 @@
                         Github Username
                     </v-col>
                     <v-col>
-                        <v-text-field placeholder="@yourusername" variant="sol">
+                        <v-text-field
+                            v-model="userInfo.github"
+                            :rules="[rules.required]"
+                            placeholder="@yourusername"
+                            rounded
+                            variant="outlined"
+                        >
                         </v-text-field>
                     </v-col>
                 </v-row>
@@ -61,6 +76,8 @@
                         size="x-large"
                         variant="flat"
                         color="red-lighten-1"
+                        type="submit"
+                        @click="submitForm"
                     >
                         <span class="text-high-emphasis">
                             Generate My Ticket
@@ -73,18 +90,35 @@
 </template>
 
 <script>
-import upload from '@src/assets/svgs/icon-upload.svg'
-import info from '@src/assets/svgs/icon-info.svg'
 import UploadAvatar from '@src/components/UploadAvatar.vue'
 export default {
     components: {
         UploadAvatar,
     },
+    emits: ['update:userInfo'],
     data() {
         return {
-            upload,
-            info,
+            rules: {
+                required: (value) => !!value || '*Field is required',
+            },
+            userInfo: {
+                name: 'yohans hailu',
+                email: 'yohans@gmail.com',
+                github: '@yohans-kasaw',
+                avatar_url: '',
+            },
         }
+    },
+    methods: {
+        handelImageUrlUpdate(url) {
+            this.userInfo.avatar_url = url
+        },
+        async submitForm() {
+            const { valid } = await this.$refs.formRef.validate()
+            if (!valid) return
+
+            this.$emit('update:userInfo', this.userInfo)
+        },
     },
 }
 </script>

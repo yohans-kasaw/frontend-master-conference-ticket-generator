@@ -1,24 +1,48 @@
 <template>
     <v-row dense class="mb-5 mx-1">
-        <v-col
-            class="upload-avatar rounded-xl cursor-pointer lighten-hover"
-        >
+        <v-col class="upload-avatar rounded-xl cursor-pointer lighten-hover">
             <div
                 class="d-flex flex-column align-center justify-center ga-6 py-8"
             >
-                <div class="icon-upload rounded-xl pt-4 pb-2 px-4">
-                    <img :src="upload" width="40rem" />
+                <div v-if="image_url" class="icon-upload">
+                    <img :src="image_url" width="120rem" />
                 </div>
 
-                <div v-if="true" class="d-flex ga-3">
-                    <v-btn variant="tonal text-none"> Remove image </v-btn>
-                    <v-btn variant="tonal text-none"> Change image </v-btn>
+                <div
+                    v-else
+                    class="icon-upload rounded-xl pt-4 pb-2 px-4"
+                    @click="openFileInput"
+                >
+                    <img :src="upload_icon" width="40rem" />
+                </div>
+
+                <div v-if="image_url" class="d-flex ga-3">
+                    <v-btn
+                        variant="tonal"
+                        class="text-none"
+                        @click="removeImage"
+                    >
+                        Remove image
+                    </v-btn>
+                    <v-btn
+                        variant="tonal"
+                        class="text-none"
+                        @click="openFileInput"
+                    >
+                        Change image
+                    </v-btn>
                 </div>
 
                 <div v-else class="font-mid" justify="center">
                     Drag and drop or click to upload
                 </div>
-                <input class="d-none" type="file" />
+                <v-file-input
+                    ref="uploader"
+                    accept="image/*"
+                    class="d-none"
+                    type="file"
+                    @change="selectImage"
+                />
             </div>
         </v-col>
         <v-col cols="12" class="d-flex align-center ga-3 pt-4 opacity-80">
@@ -31,15 +55,35 @@
 </template>
 
 <script>
-import upload from '@src/assets/svgs/icon-upload.svg'
+import upload_icon from '@src/assets/svgs/icon-upload.svg'
 import info from '@src/assets/svgs/icon-info.svg'
 export default {
-    props: {},
+    emits: ['update:avatar_url'],
     data() {
         return {
-            upload,
+            upload_icon,
             info,
+            // used for uploading
+            image_file: null,
+            image_url: null,
         }
+    },
+    methods: {
+        openFileInput() {
+            this.$refs.uploader.click()
+        },
+
+        selectImage(e) {
+            this.image_file = e.target.files[0]
+            this.image_url = URL.createObjectURL(this.image_file)
+
+            this.$emit('update:avatar_url', this.image_url)
+        },
+
+        removeImage(e) {
+            this.image_url = null
+            this.$emit('update:avatar_url', null)
+        },
     },
 }
 </script>

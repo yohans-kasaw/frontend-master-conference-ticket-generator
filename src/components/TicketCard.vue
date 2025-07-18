@@ -26,11 +26,13 @@
                         </v-col>
                     </v-row>
                     <v-row dense align="end">
-                        <v-col class="d-flex ga-2" cols="auto">
+                        <v-col class="d-flex ga-4" cols="auto">
                             <v-img
                                 :src="userInfo.avatar_url"
                                 style="border-radius: 20%"
                                 width="15vw"
+                                cover
+                                aspect-ratio="1"
                                 max-width="80px"
                             />
                             <div class="d-flex flex-column justify-center">
@@ -74,6 +76,9 @@ export default {
             icon_github,
             ticket_background_url,
         }
+    },
+    created() {
+        console.log(this.userInfo.avatar_url)
     },
 }
 </script>

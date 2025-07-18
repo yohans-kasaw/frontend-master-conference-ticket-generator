@@ -5,11 +5,11 @@
         </div>
     </div>
     <div v-if="currentView === 'ticketGen'">
-        <TicketGenView @confirm="showConfirmation" />
+        <TicketGenView @update:userInfo="generateTicket" />
     </div>
 
     <div v-else-if="currentView === 'ticketConfirmation'">
-        <TicketConfirmationView @back="showTicketGen" />
+        <TicketConfirmationView :userInfo="userInfo" />
     </div>
 </template>
 
@@ -28,7 +28,21 @@ export default {
         return {
             currentView: 'ticketGen',
             log_full_url,
+            userInfo: null,
         }
+    },
+    methods: {
+        generateTicket(userInfo) {
+            this.userInfo = {
+                ...userInfo,
+                event_date: 'Jan 31, 2025',
+                event_city: 'Austin, Tx',
+                ticket_number: '01609',
+            }
+
+            this.currentView = 'ticketConfirmation'
+            console.log(userInfo)
+        },
     },
 }
 </script>

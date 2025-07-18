@@ -32,18 +32,21 @@ export default {
     components: {
         TicketCard,
     },
+    props:{
+        userInfo: Object,
+    },
     data() {
         return {
             image_avatar,
-            userInfo: {
-                name: 'Jonatan Kirstof',
-                email: "Jonatan@gmail.com",
-                github: '@jonatankirstof1010',
-                avatar_url: image_avatar,
-                event_date: 'Jan 31, 2025',
-                event_city: 'Austin, Tx',
-                ticket_number: '01609',
-            },
+            // userInfo: {
+            //     name: 'Jonatan Kirstof',
+            //     email: "Jonatan@gmail.com",
+            //     github: '@jonatankirstof1010',
+            //     avatar_url: image_avatar,
+            //     event_date: 'Jan 31, 2025',
+            //     event_city: 'Austin, Tx',
+            //     ticket_number: '01609',
+            // },
         }
     },
 }
