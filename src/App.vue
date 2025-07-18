@@ -4,19 +4,29 @@
             <v-img :src="log_full_url" :width="200" />
         </div>
     </div>
-    <TicketConfirmation />
+    <div v-if="currentView === 'ticketGen'">
+        <TicketGenView @confirm="showConfirmation" />
+    </div>
+
+    <div v-else-if="currentView === 'ticketConfirmation'">
+        <TicketConfirmationView @back="showTicketGen" />
+    </div>
 </template>
 
 <script>
 import log_full_url from '@src/assets/svgs/logo-full.svg'
 
-import TicketConfirmation from './views/TicketConfirmation.vue'
+import TicketConfirmationView from '@src/views/TicketConfirmationView.vue'
+import TicketGenView from '@src/views/TicketGenView.vue'
+
 export default {
     components: {
-        TicketConfirmation,
+        TicketConfirmationView,
+        TicketGenView,
     },
     data() {
         return {
+            currentView: 'ticketGen',
             log_full_url,
         }
     },

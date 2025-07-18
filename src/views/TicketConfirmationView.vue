@@ -18,7 +18,7 @@
                 and will send update in the run up to the event.
             </div>
         </div>
-        <div style="width: 95%; max-width: 35rem; margin-top: 13vh; margin-bottom: 13vh;">
+        <div style="width: 95%; max-width: 35rem; margin-top: 10vh; margin-bottom: 15vh;">
             <TicketCard :userInfo="userInfo" />
         </div>
     </div>

@@ -43,6 +43,13 @@
         url('./assets/svgs/pattern-circle.svg'),
         url('./assets/svgs/pattern-lines.svg'),
         url('./assets/background/background-mobile.png');
+
+    /* Colors */
+    --primary-bg-color: rgba(70, 60, 98, 0.4);
+    --hover-bg-color: rgba(153, 142, 184, 0.4);
+    --border-color: rgba(255, 255, 255, 0.5);
+    --border-radius: 20px;
+    --input-height: 5.5vh;
 }
 
 @media (min-width: 500px) {
@@ -105,11 +112,11 @@
 }
 
 .font-mid {
-    font-size: var(--font-mid);
+    font-size: var(--font-mid) !important;
 }
 
 .font-big {
-    font-size: var(--font-big);
+    font-size: var(--font-big) !important;
 }
 
 .font-extra-big {
@@ -120,4 +127,38 @@
     width: var(--img-icon-size);
 }
 
+.icon-upload {
+    background-color: var(--primary-bg-color);
+    border: 1px solid var(--border-color);
+}
 
+/* --- */
+
+.v-field__input {
+    font-size: var(--font-mid); 
+    height: var(--input-height);
+    border-radius: var(--border-radius) !important;
+    padding-left: 1.5rem !important;
+    border: 1px solid var(--border-color);
+    background-color: var(--primary-bg-color);
+}
+
+.v-field__input:hover {
+    background-color: var(--hover-bg-color);
+}
+
+.lighten-hover:hover {
+    background-color: var(--hover-bg-color);
+}
+
+.upload-avatar {
+    border: 1px dashed var(--border-color);
+    background-color: var(--primary-bg-color);
+}
+
+.ticket-btn {
+    font-size: var(--font-big) !important;
+    font-weight: 700 !important;
+    height: var(--input-height) !important;
+    color: black;
+}

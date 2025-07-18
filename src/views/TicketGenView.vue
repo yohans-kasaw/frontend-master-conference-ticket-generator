@@ -1,0 +1,92 @@
+<template>
+    <div class="d-flex flex-column align-center">
+        <div style="margin-top: 4vh">
+            <div
+                class="font-weight-bold font-extra-big text-center mx-auto"
+                style="width: 95vw; max-width: 50rem"
+            >
+                Your Journey to Coding Conf 2025 Starts Here!
+            </div>
+            <div
+                class="mt-8 font-weight-regular font-big text-center opacity-70"
+                style="width: 85vw; max-width: 60rem"
+            >
+                Secure your spot at next year's biggest coding conference.
+            </div>
+        </div>
+        <div
+            class="mt-16"
+            style="margin-bottom: 10vh; width: 95vw; max-width: 700px"
+        >
+            <v-form>
+                <v-row dense class="mb-5">
+                    <v-col cols="12" class="font-big font-weight-medium mb-2">
+                        Upload Avatar
+                    </v-col>
+                    <UploadAvatar />
+                </v-row>
+
+                <v-row dense>
+                    <v-col cols="12" class="font-big font-weight-medium">
+                        Full Name
+                    </v-col>
+                    <v-col>
+                        <v-text-field variant="sol"> </v-text-field>
+                    </v-col>
+                </v-row>
+                <v-row dense>
+                    <v-col cols="12" class="font-big font-weight-medium">
+                        Email Adress
+                    </v-col>
+                    <v-col>
+                        <v-text-field
+                            variant="sol"
+                            placeholder="example@example.com"
+                            type="email"
+                        ></v-text-field>
+                    </v-col>
+                </v-row>
+                <v-row dense>
+                    <v-col cols="12" class="font-big font-weight-medium">
+                        Github Username
+                    </v-col>
+                    <v-col>
+                        <v-text-field placeholder="@yourusername" variant="sol">
+                        </v-text-field>
+                    </v-col>
+                </v-row>
+                <v-row dense>
+                    <v-btn
+                        class="ticket-btn rounded-xl w-100 text-none mt-5"
+                        size="x-large"
+                        variant="flat"
+                        color="red-lighten-1"
+                    >
+                        <span class="text-high-emphasis">
+                            Generate My Ticket
+                        </span>
+                    </v-btn>
+                </v-row>
+            </v-form>
+        </div>
+    </div>
+</template>
+
+<script>
+import upload from '@src/assets/svgs/icon-upload.svg'
+import info from '@src/assets/svgs/icon-info.svg'
+import UploadAvatar from '@src/components/UploadAvatar.vue'
+export default {
+    components: {
+        UploadAvatar,
+    },
+    data() {
+        return {
+            upload,
+            info,
+        }
+    },
+}
+</script>
+
+<style></style>
