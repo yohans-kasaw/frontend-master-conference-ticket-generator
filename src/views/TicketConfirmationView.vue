@@ -6,7 +6,7 @@
                 style="width: 95vw; max-width: 50rem"
             >
                 Congrats,
-                <span class="red-gradient-text">{{ userInfo.name }}!</span>
+                <span class="red-gradient-text">{{ ticketInfo.name }}!</span>
                 Your ticket is ready.
             </div>
             <div
@@ -14,18 +14,17 @@
                 style="width: 85vw; max-width: 40rem"
             >
                 We've emailed your ticket to
-                <span class="red-text">{{ userInfo.email }}</span>
+                <span class="red-text">{{ ticketInfo.email }}</span>
                 and will send update in the run up to the event.
             </div>
         </div>
         <div style="width: 95%; max-width: 35rem; margin-top: 10vh; margin-bottom: 15vh;">
-            <TicketCard :userInfo="userInfo" />
+            <TicketCard :ticketInfo="ticketInfo" />
         </div>
     </div>
 </template>
 
 <script>
-import image_avatar from '@src/assets/images/image-avatar.jpg'
 import TicketCard from '@src/components/TicketCard.vue'
 
 export default {
@@ -33,21 +32,7 @@ export default {
         TicketCard,
     },
     props:{
-        userInfo: Object,
-    },
-    data() {
-        return {
-            image_avatar,
-            // userInfo: {
-            //     name: 'Jonatan Kirstof',
-            //     email: "Jonatan@gmail.com",
-            //     github: '@jonatankirstof1010',
-            //     avatar_url: image_avatar,
-            //     event_date: 'Jan 31, 2025',
-            //     event_city: 'Austin, Tx',
-            //     ticket_number: '01609',
-            // },
-        }
+        ticketInfo: Object,
     },
 }
 </script>

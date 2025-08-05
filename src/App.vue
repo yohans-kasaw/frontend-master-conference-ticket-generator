@@ -5,11 +5,11 @@
         </div>
     </div>
     <div v-if="currentView === 'ticketGen'">
-        <TicketGenView @update:userInfo="generateTicket" />
+        <TicketGenView />
     </div>
 
     <div v-else-if="currentView === 'ticketConfirmation'">
-        <TicketConfirmationView :userInfo="userInfo" />
+        <TicketConfirmationView :ticketInfo="ticketInfo" />
     </div>
 </template>
 
@@ -18,6 +18,9 @@ import log_full_url from '@src/assets/svgs/logo-full.svg'
 
 import TicketConfirmationView from '@src/views/TicketConfirmationView.vue'
 import TicketGenView from '@src/views/TicketGenView.vue'
+
+import { mapState } from 'pinia'
+import { useUserInfoStore, useConfInfoStore } from '@src/store/store.js'
 
 export default {
     components: {
@@ -28,20 +31,21 @@ export default {
         return {
             currentView: 'ticketGen',
             log_full_url,
-            userInfo: null,
         }
     },
-    methods: {
-        generateTicket(userInfo) {
-            this.userInfo = {
-                ...userInfo,
-                event_date: 'Jan 31, 2025',
-                event_city: 'Austin, Tx',
-                ticket_number: '01609',
+    computed: {
+        ...mapState(useUserInfoStore, ['userInfo']),
+        ...mapState(useConfInfoStore, ['confInfo']),
+        ticketInfo() {
+            return {
+                ...this.userInfo,
+                ...this.confInfo,
             }
-
+        },
+    },
+    watch: {
+        userInfo(newValue, oldValue) {
             this.currentView = 'ticketConfirmation'
-            console.log(userInfo)
         },
     },
 }

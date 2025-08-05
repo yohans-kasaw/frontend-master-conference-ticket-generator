@@ -32,7 +32,7 @@
                     </v-col>
                     <v-col>
                         <v-text-field
-                            v-model="userInfo.name"
+                            v-model="userInfoForm.name"
                             :rules="[rules.required]"
                             rounded
                             variant="outlined"
@@ -46,7 +46,7 @@
                     </v-col>
                     <v-col>
                         <v-text-field
-                            v-model="userInfo.email"
+                            v-model="userInfoForm.email"
                             :rules="[rules.required]"
                             rounded
                             variant="outlined"
@@ -61,7 +61,7 @@
                     </v-col>
                     <v-col>
                         <v-text-field
-                            v-model="userInfo.github"
+                            v-model="userInfoForm.github"
                             :rules="[rules.required]"
                             placeholder="@yourusername"
                             rounded
@@ -91,17 +91,18 @@
 
 <script>
 import UploadAvatar from '@src/components/UploadAvatar.vue'
+import { mapActions } from 'pinia'
+import { useUserInfoStore } from '@src/store/store.js'
 export default {
     components: {
         UploadAvatar,
     },
-    emits: ['update:userInfo'],
     data() {
         return {
             rules: {
                 required: (value) => !!value || '*Field is required',
             },
-            userInfo: {
+            userInfoForm: {
                 name: 'yohans hailu',
                 email: 'yohans@gmail.com',
                 github: '@yohans-kasaw',
@@ -110,15 +111,18 @@ export default {
         }
     },
     methods: {
+        ...mapActions(useUserInfoStore, ['setUserInfo']),
         handelImageUrlUpdate(url) {
-            this.userInfo.avatar_url = url
+            this.userInfoForm.avatar_url = url
         },
+
         async submitForm() {
             const { valid } = await this.$refs.formRef.validate()
             if (!valid) return
 
-            this.$emit('update:userInfo', this.userInfo)
+            this.setUserInfo(this.userInfoForm)
         },
+
     },
 }
 </script>

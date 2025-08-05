@@ -20,15 +20,15 @@
                                 />
                             </div>
                             <div class="font-mid text-center">
-                                {{ userInfo.event_date }} /
-                                {{ userInfo.event_city }}
+                                {{ ticketInfo.event_date }} /
+                                {{ ticketInfo.event_city }}
                             </div>
                         </v-col>
                     </v-row>
                     <v-row dense align="end">
                         <v-col class="d-flex ga-4" cols="auto">
                             <v-img
-                                :src="userInfo.avatar_url"
+                                :src="ticketInfo.avatar_url"
                                 style="border-radius: 20%"
                                 width="15vw"
                                 cover
@@ -37,14 +37,14 @@
                             />
                             <div class="d-flex flex-column justify-center">
                                 <div class="font-weight-medium font-big">
-                                    {{ userInfo.name }}
+                                    {{ ticketInfo.name }}
                                 </div>
                                 <div class="d-flex">
                                     <img :src="icon_github" class="img-icon" />
                                     <span
                                         class="font-weight-medium font-mid pl-1"
                                     >
-                                        {{ userInfo.github }}
+                                        {{ ticketInfo.github }}
                                     </span>
                                 </div>
                             </div>
@@ -53,7 +53,7 @@
                 </v-col>
                 <v-col cols="2" class="d-flex justify-center align-center">
                     <div class="vertical-text font-big" style="color: gray">
-                        #{{ userInfo.ticket_number }}
+                        #{{ ticketInfo.ticket_number }}
                     </div>
                 </v-col>
             </div>
@@ -68,7 +68,7 @@ import ticket_background_url from '@src/assets/svgs/pattern-ticket.svg'
 
 export default {
     props: {
-        userInfo: Object,
+        ticketInfo: Object,
     },
     data() {
         return {
@@ -76,9 +76,6 @@ export default {
             icon_github,
             ticket_background_url,
         }
-    },
-    created() {
-        console.log(this.userInfo.avatar_url)
     },
 }
 </script>
