@@ -1,6 +1,6 @@
 <template>
     <div class="d-flex flex-column align-center">
-        <div style="margin-top: 4vh;">
+        <div style="margin-top: 4vh">
             <div
                 class="font-weight-bold font-extra-big text-center mx-auto"
                 style="width: 95vw; max-width: 50rem"
@@ -18,7 +18,14 @@
                 and will send update in the run up to the event.
             </div>
         </div>
-        <div style="width: 95%; max-width: 35rem; margin-top: 10vh; margin-bottom: 15vh;">
+        <div
+            style="
+                width: 95%;
+                max-width: 35rem;
+                margin-top: 10vh;
+                margin-bottom: 15vh;
+            "
+        >
             <TicketCard :ticketInfo="ticketInfo" />
         </div>
     </div>
@@ -26,13 +33,22 @@
 
 <script>
 import TicketCard from '@src/components/TicketCard.vue'
+import { mapState } from 'pinia'
+import { useUserInfoStore, useConfInfoStore } from '@src/store/store.js'
 
 export default {
     components: {
         TicketCard,
     },
-    props:{
-        ticketInfo: Object,
+    computed: {
+        ...mapState(useUserInfoStore, ['userInfo']),
+        ...mapState(useConfInfoStore, ['confInfo']),
+        ticketInfo() {
+            return {
+                ...this.userInfo,
+                ...this.confInfo,
+            }
+        },
     },
 }
 </script>
