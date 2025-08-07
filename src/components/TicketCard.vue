@@ -28,7 +28,9 @@
                     <v-row dense align="end">
                         <v-col class="d-flex ga-4" cols="auto">
                             <v-img
-                                :src="ticketInfo.avatar_url"
+                                :src="
+                                    ticketInfo.avatar_url || avatar_placehorder
+                                "
                                 style="border-radius: 20%"
                                 width="15vw"
                                 cover
@@ -75,6 +77,8 @@ export default {
             log_full_url,
             icon_github,
             ticket_background_url,
+            avatar_placehorder:
+                'https://cdn-icons-png.flaticon.com/512/5556/5556468.png',
         }
     },
 }

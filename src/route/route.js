@@ -11,6 +11,7 @@ export default createRouter({
         },
         {
             path: '/confirm',
+            name: 'TicketConfirm',
             component: TicketConfirmationView,
         },
     ],

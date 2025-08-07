@@ -121,8 +121,9 @@ export default {
             if (!valid) return
 
             this.setUserInfo(this.userInfoForm)
-        },
 
+            this.$router.push({ name: 'TicketConfirm' })
+        },
     },
 }
 </script>
