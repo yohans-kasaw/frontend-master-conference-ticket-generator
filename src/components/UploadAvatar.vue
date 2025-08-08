@@ -59,6 +59,9 @@ import upload_icon from '@src/assets/svgs/icon-upload.svg'
 import info from '@src/assets/svgs/icon-info.svg'
 export default {
     emits: ['update:avatar_url'],
+    props: {
+        avatar_url: String,
+    },
     data() {
         return {
             upload_icon,
@@ -88,6 +91,9 @@ export default {
             this.image_url = null
             this.$emit('update:avatar_url', null)
         },
+    },
+    created() {
+        if (this.avatar_url) this.image_url = this.avatar_url
     },
 }
 </script>

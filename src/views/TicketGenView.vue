@@ -23,7 +23,10 @@
                     <v-col cols="12" class="font-big font-weight-medium mb-2">
                         Upload Avatar
                     </v-col>
-                    <UploadAvatar @update:avatar_url="handelImageUrlUpdate" />
+                    <UploadAvatar
+                        :avatar_url="userInfoForm.avatar_url"
+                        @update:avatar_url="handelImageUrlUpdate"
+                    />
                 </v-row>
 
                 <v-row dense>
@@ -34,6 +37,7 @@
                         <v-text-field
                             v-model="userInfoForm.name"
                             :rules="[rules.required]"
+                            placeholder="jhon doe"
                             rounded
                             variant="outlined"
                         >
@@ -91,7 +95,7 @@
 
 <script>
 import UploadAvatar from '@src/components/UploadAvatar.vue'
-import { mapActions } from 'pinia'
+import { mapActions, mapState } from 'pinia'
 import { useUserInfoStore } from '@src/store/store.js'
 export default {
     components: {
@@ -103,19 +107,21 @@ export default {
                 required: (value) => !!value || '*Field is required',
             },
             userInfoForm: {
-                name: 'yohans hailu',
-                email: 'yohans@gmail.com',
-                github: '@yohans-kasaw',
-                avatar_url: '',
+                name: null,
+                email: null,
+                github: null,
+                avatar_url: null,
             },
         }
+    },
+    computed: {
+        ...mapState(useUserInfoStore, ['userInfo']),
     },
     methods: {
         ...mapActions(useUserInfoStore, ['setUserInfo']),
         handelImageUrlUpdate(url) {
             this.userInfoForm.avatar_url = url
         },
-
         async submitForm() {
             const { valid } = await this.$refs.formRef.validate()
             if (!valid) return
@@ -124,6 +130,12 @@ export default {
 
             this.$router.push({ name: 'TicketConfirm' })
         },
+    },
+    created() {
+        this.userInfoForm = {
+            ...this.userInfoForm,
+            ...this.userInfo,
+        }
     },
 }
 </script>
