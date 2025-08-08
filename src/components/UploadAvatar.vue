@@ -75,9 +75,13 @@ export default {
 
         selectImage(e) {
             this.image_file = e.target.files[0]
-            this.image_url = URL.createObjectURL(this.image_file)
+            const reader = new FileReader()
+            reader.readAsDataURL(this.image_file)
 
-            this.$emit('update:avatar_url', this.image_url)
+            reader.onload = (event) => {
+                this.image_url = event.target.result
+                this.$emit('update:avatar_url', this.image_url)
+            }
         },
 
         removeImage(e) {

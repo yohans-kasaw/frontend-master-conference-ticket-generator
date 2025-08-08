@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-export const useUserInfoStore = defineStore('count', {
+export const useUserInfoStore = defineStore('user info', {
     state: () => ({
         userInfo: {
             name: null,
@@ -17,9 +17,10 @@ export const useUserInfoStore = defineStore('count', {
             }
         },
     },
+    persist: true,
 })
 
-export const useConfInfoStore = defineStore('conf', {
+export const useConfInfoStore = defineStore('conf info', {
     state: () => ({
         confInfo: {
             event_date: 'Jan 31, 2025',
@@ -28,4 +29,5 @@ export const useConfInfoStore = defineStore('conf', {
             ticket_number: '01609',
         },
     }),
+    persist: true,
 })

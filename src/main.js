@@ -7,6 +7,7 @@ import * as directives from 'vuetify/directives'
 import 'vuetify/styles'
 import { createPinia } from 'pinia'
 import route from '@src/route/route'
+import piniaPluginPersistence from 'pinia-plugin-persistence'
 
 const vuetify = createVuetify({
     components,
@@ -22,6 +23,7 @@ const vuetify = createVuetify({
     },
 })
 const pinia = createPinia()
+pinia.use(piniaPluginPersistence)
 
 const app = createApp(App)
 app.use(pinia)
