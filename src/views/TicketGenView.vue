@@ -97,6 +97,7 @@
 import UploadAvatar from '@src/components/UploadAvatar.vue'
 import { mapActions, mapState } from 'pinia'
 import { useUserInfoStore } from '@src/store/store.js'
+import { createTicketNumber } from '@src/lib/utils.js'
 export default {
     components: {
         UploadAvatar,
@@ -126,6 +127,7 @@ export default {
             const { valid } = await this.$refs.formRef.validate()
             if (!valid) return
 
+            this.userInfoForm.ticket_number = await createTicketNumber()
             this.setUserInfo(this.userInfoForm)
 
             this.$router.push({ name: 'TicketConfirm' })

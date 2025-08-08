@@ -7,6 +7,7 @@ export const useUserInfoStore = defineStore('user info', {
             email: null,
             github: null,
             avatar_url: null,
+            ticket_number: null,
         },
     }),
     actions: {
@@ -26,7 +27,6 @@ export const useConfInfoStore = defineStore('conf info', {
             event_date: 'Jan 31, 2025',
             event_city: 'Austin, Tx',
             // should be randomly generated
-            ticket_number: '01609',
         },
     }),
     persist: true,
