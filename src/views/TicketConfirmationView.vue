@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex flex-column align-center">
+    <div class="d-flex flex-column align-center" style="margin-bottom: 15vh">
         <div style="margin-top: 4vh">
             <div
                 class="font-weight-bold font-extra-big text-center mx-auto"
@@ -18,15 +18,11 @@
                 and will send update in the run up to the event.
             </div>
         </div>
-        <div
-            style="
-                width: 95%;
-                max-width: 35rem;
-                margin-top: 10vh;
-                margin-bottom: 15vh;
-            "
-        >
+        <div style="width: 95%; max-width: 35rem; margin-top: 10vh">
             <TicketCard :ticketInfo="ticketInfo" />
+            <div class="mt-4 text-right mr-4">
+                <router-link to="/">change</router-link>
+            </div>
         </div>
     </div>
 </template>

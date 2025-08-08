@@ -127,7 +127,7 @@ export default {
             const { valid } = await this.$refs.formRef.validate()
             if (!valid) return
 
-            this.userInfoForm.ticket_number = await createTicketNumber()
+            this.userInfoForm.ticket_number = createTicketNumber()
             this.setUserInfo(this.userInfoForm)
 
             this.$router.push({ name: 'TicketConfirm' })

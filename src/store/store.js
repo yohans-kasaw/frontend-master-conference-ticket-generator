@@ -8,6 +8,7 @@ export const useUserInfoStore = defineStore('user info', {
             github: null,
             avatar_url: null,
             ticket_number: null,
+            isRegistered: false,
         },
     }),
     actions: {
@@ -15,6 +16,7 @@ export const useUserInfoStore = defineStore('user info', {
             this.userInfo = {
                 ...this.userInfo,
                 ...userInfo,
+                isRegistered: true,
             }
         },
     },
